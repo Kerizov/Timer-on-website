@@ -37,7 +37,7 @@
 
 	 // timer
 
-	 let deadline = '2019-10-21';
+	 let deadline = '2019-11-2';
 
 	 function getTimeRemaining(endtime) {
 	 	let t = Date.parse(endtime) - Date.parse(new Date()),
@@ -65,7 +65,7 @@
 	 		let t = getTimeRemaining(endtime);
 	 		/*hours.textContent = t.hours;
 	 		minutes.textContent = t.minutes;
-	 		seconds.textContent = t.seconds;*/ // numbers like a 4:9:24|цифры как 4:9:24(вместо 04:09:24)
+	 		seconds.textContent = t.seconds;*/ // numbers like a 4:9:24|цифры как 4:9:24(вместо 04:09:24 )
 
 	 		function addZero(num) {
 	 			if (num <= 9) {
@@ -88,4 +88,29 @@
 	 }
 
 	 setClock('timer', deadline);
+
+	 //modal
+
+	 let more = document.querySelector('.more'),
+	 	 overlay = document.querySelector('.overlay'),
+	 	 close = document.querySelector('.popup-close'),
+	 	 description = document.querySelectorAll('.description-btn');
+
+		for (let i = 0; i < description.length; i++) {
+		description[i].addEventListener('click', function() {
+		overlay.style.display = 'block';
+		this.classList.add('.more-splash')});
+	};
+
+	more.addEventListener('click', function() {
+		overlay.style.display = 'block';
+		this.classList.add('more-splash');
+		document.body.style.overflow = 'hidden';
+	});
+
+	close.addEventListener('click', function() {
+		overlay.style.display = 'none';
+		more.classList.remove('more-splash');
+		document.body.style.overflow = '';
+	});
 });
